@@ -9,17 +9,16 @@ using CTRE.Phoenix.Controller;
 using CTRE.Phoenix.MotorControl;
 using CTRE.Phoenix.MotorControl.CAN;
 
-namespace Hero_Arcade_Drive_Example1
-{
-    public class Program
-    {
+namespace Drive {
+
+    public class Program {
         //TODO
         //Need to uncomment to run on a robot
         /* talon constants*/
-        //static TalonSRX rightSlave = new TalonSRX(2);
-        //static TalonSRX right = new TalonSRX(3);
-        //static TalonSRX leftSlave = new TalonSRX(6);
-        //static TalonSRX left = new TalonSRX(5);
+        static TalonSRX rightSlave = new TalonSRX(2);
+        static TalonSRX right = new TalonSRX(3);
+        static TalonSRX leftSlave = new TalonSRX(6);
+        static TalonSRX left = new TalonSRX(5);
         //static TalonSRX shooterBM = new TalonSRX(5);
         //static TalonSRX shooterBS = new TalonSRX(5);
         //static TalonSRX shooterTM = new TalonSRX(5);
@@ -29,11 +28,9 @@ namespace Hero_Arcade_Drive_Example1
 
         static CTRE.Phoenix.Controller.GameController _gamepad = null;
 
-        public static void Main()
-        {
+        public static void Main() {
             /* loop forever */
-            while (true)
-            {
+            while (true) {
                 /* drive robot using gamepad */
                 Drive();
                 /* print whatever is in our string builder */
@@ -49,24 +46,19 @@ namespace Hero_Arcade_Drive_Example1
          * If value is within 10% of center, clear it.
          * @param value [out] floating point value to deadband.
          */
-        static void Deadband(ref float value)
-        {
-            if (value < -0.10)
-            {
+        static void Deadband(ref float value) {
+            if (value < -0.10) {
                 /* outside of deadband */
             }
-            else if (value > +0.10)
-            {
+            else if (value > +0.10) {
                 /* outside of deadband */
             }
-            else
-            {
+            else {
                 /* within 10% so zero it */
                 value = 0;
             }
         }
-        static void Drive()
-        {
+        static void Drive() {
             if (null == _gamepad)
                 _gamepad = new GameController(UsbHostDevice.GetInstance());
 
@@ -83,10 +75,10 @@ namespace Hero_Arcade_Drive_Example1
 
             //TODO 
             //Uncomment when ready to test on a robot
-            //left.Set(ControlMode.PercentOutput, leftThrot);
-            //leftSlave.Set(ControlMode.PercentOutput, leftThrot);
-            //right.Set(ControlMode.PercentOutput, -rightThrot);
-            //rightSlave.Set(ControlMode.PercentOutput, -rightThrot);
+            left.Set(ControlMode.PercentOutput, leftThrot);
+            leftSlave.Set(ControlMode.PercentOutput, leftThrot);
+            right.Set(ControlMode.PercentOutput, -rightThrot);
+            rightSlave.Set(ControlMode.PercentOutput, -rightThrot);
 
             stringBuilder.Append("\t");
             stringBuilder.Append(x);
