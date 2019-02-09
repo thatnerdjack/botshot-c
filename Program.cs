@@ -13,6 +13,8 @@ namespace Hero_Arcade_Drive_Example1
 {
     public class Program
     {
+        //TODO
+        //Need to uncomment to run on a robot
         /* talon constants*/
         //static TalonSRX rightSlave = new TalonSRX(2);
         //static TalonSRX right = new TalonSRX(3);
@@ -79,6 +81,8 @@ namespace Hero_Arcade_Drive_Example1
             float leftThrot = x;
             float rightThrot = y;
 
+            //TODO 
+            //Uncomment when ready to test on a robot
             //left.Set(ControlMode.PercentOutput, leftThrot);
             //leftSlave.Set(ControlMode.PercentOutput, leftThrot);
             //right.Set(ControlMode.PercentOutput, -rightThrot);
