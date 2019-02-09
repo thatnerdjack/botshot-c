@@ -9,15 +9,19 @@ using CTRE.Phoenix.Controller;
 using CTRE.Phoenix.MotorControl;
 using CTRE.Phoenix.MotorControl.CAN;
 
-namespace BotShotCode
+namespace Hero_Arcade_Drive_Example1
 {
     public class Program
     {
-        /* create a talon */
-        static TalonSRX rightSlave = new TalonSRX(4);
-        static TalonSRX right = new TalonSRX(3);
-        static TalonSRX leftSlave = new TalonSRX(2);
-        static TalonSRX left = new TalonSRX(1);
+        /* talon constants*/
+        //static TalonSRX rightSlave = new TalonSRX(2);
+        //static TalonSRX right = new TalonSRX(3);
+        //static TalonSRX leftSlave = new TalonSRX(6);
+        //static TalonSRX left = new TalonSRX(5);
+        //static TalonSRX shooterBM = new TalonSRX(5);
+        //static TalonSRX shooterBS = new TalonSRX(5);
+        //static TalonSRX shooterTM = new TalonSRX(5);
+        //static TalonSRX shooterTS = new TalonSRX(5);
 
         static StringBuilder stringBuilder = new StringBuilder();
 
@@ -64,28 +68,28 @@ namespace BotShotCode
             if (null == _gamepad)
                 _gamepad = new GameController(UsbHostDevice.GetInstance());
 
-            float x = _gamepad.GetAxis(0);
-            float y = -1 * _gamepad.GetAxis(1);
-            float twist = _gamepad.GetAxis(2);
+            float x = _gamepad.GetAxis(1);
+            float y = _gamepad.GetAxis(3);
+            //float twist = _gamepad.GetAxis(2);
 
             Deadband(ref x);
             Deadband(ref y);
-            Deadband(ref twist);
+            //Deadband(ref twist);
 
-            float leftThrot = y + twist;
-            float rightThrot = y - twist;
+            float leftThrot = x;
+            float rightThrot = y;
 
-            left.Set(ControlMode.PercentOutput, leftThrot);
-            leftSlave.Set(ControlMode.PercentOutput, leftThrot);
-            right.Set(ControlMode.PercentOutput, -rightThrot);
-            rightSlave.Set(ControlMode.PercentOutput, -rightThrot);
+            //left.Set(ControlMode.PercentOutput, leftThrot);
+            //leftSlave.Set(ControlMode.PercentOutput, leftThrot);
+            //right.Set(ControlMode.PercentOutput, -rightThrot);
+            //rightSlave.Set(ControlMode.PercentOutput, -rightThrot);
 
             stringBuilder.Append("\t");
             stringBuilder.Append(x);
             stringBuilder.Append("\t");
             stringBuilder.Append(y);
-            stringBuilder.Append("\t");
-            stringBuilder.Append(twist);
+            //stringBuilder.Append("\t");
+            //stringBuilder.Append(twist);
 
         }
     }
