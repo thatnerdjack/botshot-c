@@ -16,7 +16,7 @@ namespace Drive {
         //Need to uncomment to run on a robot
         /* talon constants*/
         static TalonSRX rightSlave = new TalonSRX(2);
-        static TalonSRX right = new TalonSRX(3);
+        static TalonSRX right = new TalonSRX(1);
         static TalonSRX leftSlave = new TalonSRX(6);
         static TalonSRX left = new TalonSRX(5);
         //static TalonSRX shooterBM = new TalonSRX(5);
