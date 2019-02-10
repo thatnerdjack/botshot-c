@@ -9,10 +9,10 @@ using static BotShotCode.ShootSub;
 namespace BotShotCode {
 
     public class Program {
-      
-		//Communication constants
-		static System.IO.Ports.SerialPort _uart = new System.IO.Ports.SerialPort(CTRE.HERO.IO.Port1.UART, 115200);
-		static StringBuilder stringBuilder = new StringBuilder();
+
+        //Communication constants
+        static System.IO.Ports.SerialPort _uart = new System.IO.Ports.SerialPort(CTRE.HERO.IO.Port1.UART, 115200);
+        static StringBuilder stringBuilder = new StringBuilder();
 
 		//Controller constants
         static CTRE.Phoenix.Controller.GameController _gamepad = null;
@@ -47,15 +47,5 @@ namespace BotShotCode {
 			//Shoot(_gamepad);
 		}
 
-		static double uartRead() {
-			//Connects to UART port 1 on the HERO, and reads 
-			byte[] buffer = new byte[100];
-			_uart.Read(buffer, 0, 100);
-			return (double)buffer.GetValue(0);
-		}
-
-		static void uartWrite(byte[] data) {
-			_uart.Write(data, 0, data.Length);
-		}
     }
 }

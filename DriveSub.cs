@@ -23,11 +23,9 @@ namespace BotShotCode{
 
             double x = GAMEPAD.GetAxis(1);
             double y = GAMEPAD.GetAxis(3);
-            //float twist = _gamepad.GetAxis(2);
 
             Deadband(ref x);
             Deadband(ref y);
-            //Deadband(ref twist);
 
             //Pow(x,2) gives finer controls over the drivebase
             //.5 for total half-speed reduction
@@ -46,8 +44,6 @@ namespace BotShotCode{
             stringBuilder.Append(x);
             stringBuilder.Append("\t");
             stringBuilder.Append(y);
-            //stringBuilder.Append("\t");
-            //stringBuilder.Append(twist);
 
         }
     }
