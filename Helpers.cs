@@ -19,5 +19,11 @@ namespace BotShotCode{
         static void uartWrite(System.IO.Ports.SerialPort _uart, byte[] data) {
             _uart.Write(data, 0, data.Length);
         }
+
+		public const int PID = 0;
+		public const int timeoutMs = 0;
+		public const int remotePID = 0;
+		public const double deadband = .05;
+
     }
 }

@@ -4,6 +4,7 @@ using CTRE.Phoenix;
 using CTRE.Phoenix.Controller;
 using CTRE.Phoenix.MotorControl;
 using CTRE.Phoenix.MotorControl.CAN;
+using CTRE.Phoenix.Sensors;
 
 using static BotShotCode.Helpers;
 
@@ -16,9 +17,27 @@ namespace BotShotCode{
         static TalonSRX leftSlave = new TalonSRX(6);
         static TalonSRX left = new TalonSRX(5);
 
-
         public static void Drive(GameController GAMEPAD, StringBuilder stringBuilder) {
-            if (null == GAMEPAD)
+			/*Talon and Encoder Constants*/
+			right.SetNeutralMode(NeutralMode.Brake);
+			rightSlave.SetNeutralMode(NeutralMode.Brake);
+			left.SetNeutralMode(NeutralMode.Brake);
+			leftSlave.SetNeutralMode(NeutralMode.Brake);
+
+			/*Right side of drivetrain needs to be inverted*/
+			right.SetInverted(true);
+			rightSlave.SetInverted(true);
+
+			
+
+			left.ConfigSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,Helpers.PID,Helpers.timeoutMs);
+			leftSlave.ConfigRemoteFeedbackFilter(left.GetDeviceID(), RemoteSensorSource.RemoteSensorSource_TalonSRX_SelectedSensor, Helpers.remotePID, Helpers.timeoutMs);
+			right.ConfigSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Helpers.PID, Helpers.timeoutMs);
+			rightSlave.ConfigRemoteFeedbackFilter(left.GetDeviceID(), RemoteSensorSource.RemoteSensorSource_TalonSRX_SelectedSensor, Helpers.remotePID, Helpers.timeoutMs);
+
+			/*End Constants*/
+
+			if (null == GAMEPAD)
                GAMEPAD = new GameController(UsbHostDevice.GetInstance());
 
             double x = GAMEPAD.GetAxis(1);
