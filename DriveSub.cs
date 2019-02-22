@@ -41,9 +41,9 @@ namespace BotShotCode{
             rightSlave.Set(ControlMode.PercentOutput, -rightThrot);
 
             stringBuilder.Append("\t");
-            stringBuilder.Append(x);
+            stringBuilder.Append(leftThrot);
             stringBuilder.Append("\t");
-            stringBuilder.Append(y);
+            stringBuilder.Append(rightThrot);
 
         }
     }

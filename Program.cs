@@ -44,8 +44,13 @@ namespace BotShotCode {
 
             //Shooting Function
             stringBuilder.Append("--SHOOTER CONTROLS--");
-			//Shoot(_gamepad);
+			Shoot(_gamepad,stringBuilder);
+
+			//Tilt Function
+			stringBuilder.Append("--TILT CONTROLS--");
+			Tilt(_gamepad, stringBuilder);
+
 		}
 
-    }
+	}
 }
