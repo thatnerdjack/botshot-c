@@ -6,7 +6,7 @@ using CTRE.Phoenix.MotorControl;
 using CTRE.Phoenix.MotorControl.CAN;
 using CTRE.Phoenix.Sensors;
 
-using static BotShotCode.Helpers;
+//using static BotShotCode.Helpers;
 
 namespace BotShotCode{
     
@@ -25,8 +25,8 @@ namespace BotShotCode{
 			leftSlave.SetNeutralMode(NeutralMode.Brake);
 
 			/*Right side of drivetrain needs to be inverted*/
-			right.SetInverted(true);
-			rightSlave.SetInverted(true);
+			//right.SetInverted(true);
+			//rightSlave.SetInverted(true);
 
 			
 
@@ -43,8 +43,8 @@ namespace BotShotCode{
             double x = GAMEPAD.GetAxis(1);
             double y = GAMEPAD.GetAxis(3);
 
-            Deadband(ref x);
-            Deadband(ref y);
+            Helpers.Deadband(ref x);
+			Helpers.Deadband(ref y);
 
             //Pow(x,2) gives finer controls over the drivebase
             //.5 for total half-speed reduction

@@ -1,10 +1,9 @@
 ﻿using System.Threading;
 using Microsoft.SPOT;
 using System.Text;
-
 using CTRE.Phoenix;
-using static BotShotCode.DriveSub;
-using static BotShotCode.ShootSub;
+
+//using static BotSho  tCode.DriveSub;
 
 namespace BotShotCode {
 
@@ -13,7 +12,7 @@ namespace BotShotCode {
         //Communication constants
         static System.IO.Ports.SerialPort _uart = new System.IO.Ports.SerialPort(CTRE.HERO.IO.Port1.UART, 115200);
         static StringBuilder stringBuilder = new StringBuilder();
-
+		
 		//Controller constants
         static CTRE.Phoenix.Controller.GameController _gamepad = null;
 
@@ -40,15 +39,15 @@ namespace BotShotCode {
             }
 			//Drive Function
 			stringBuilder.Append("--DRIVEBASE CONTROLS--");
-			Drive(_gamepad,stringBuilder);
+			DriveSub.Drive(_gamepad,stringBuilder);
 
             //Shooting Function
-            stringBuilder.Append("--SHOOTER CONTROLS--");
-			Shoot(_gamepad,stringBuilder);
+            stringBuilder.Append("\n--SHOOTER CONTROLS--");
+			ShootSub.Shoot(_gamepad,stringBuilder);
 
 			//Tilt Function
-			stringBuilder.Append("--TILT CONTROLS--");
-			Tilt(_gamepad, stringBuilder);
+			stringBuilder.Append("\n--TILT CONTROLS--");
+			ShootSub.Tilt(_gamepad, stringBuilder);
 
 		}
 
