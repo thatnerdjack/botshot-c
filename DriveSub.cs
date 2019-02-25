@@ -25,8 +25,8 @@ namespace BotShotCode{
 			leftSlave.SetNeutralMode(NeutralMode.Brake);
 
 			/*Right side of drivetrain needs to be inverted*/
-			right.SetInverted(true);
-			rightSlave.SetInverted(true);
+			//right.SetInverted(true);
+			//rightSlave.SetInverted(true);
 
 			
 
