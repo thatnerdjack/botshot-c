@@ -15,12 +15,12 @@ namespace BotShotCode {
         static VictorSPX shooterTS = new VictorSPX(8);
 
 		static VictorSPX tiltMoter = new VictorSPX(9);
-		//static VictorSPX intake = new VictorSPX(10);
-		//static VictorSPX loader = new VictorSPX(11);
+		static VictorSPX intake = new VictorSPX(10);
+		static VictorSPX loader = new VictorSPX(11);
 
         public static void Shoot(GameController GAMEPAD, StringBuilder stringBuilder) {
 
-            double power = GAMEPAD.GetAxis(0);
+            double power = GAMEPAD.GetAxis(4);
 
             Helpers.Deadband(ref power);
 
@@ -50,8 +50,52 @@ namespace BotShotCode {
 				stringBuilder.Append("Tilt Down");
 			}
 
-			if (!GAMEPAD.GetButton(2) && !GAMEPAD.GetButton(1)) {
+			if (!GAMEPAD.GetButton(1) && !GAMEPAD.GetButton(2)) {
 				tiltMoter.Set(ControlMode.PercentOutput, 0);
+			}
+		}
+
+		public static void Intake(GameController GAMEPAD, StringBuilder stringBuilder) {
+			if (GAMEPAD.GetButton(3))
+			{
+				//intake.Set(ControlMode.PercentOutput, 1);
+				//stringBuilder.Append("\t");
+				//stringBuilder.Append("Tilt Up");
+			}
+
+
+			if (GAMEPAD.GetButton(4))
+			{
+				intake.Set(ControlMode.PercentOutput, -1);
+				stringBuilder.Append("\t");
+				stringBuilder.Append("Intake");
+			}
+
+			if (!GAMEPAD.GetButton(3) && !GAMEPAD.GetButton(4))
+			{
+				intake.Set(ControlMode.PercentOutput, 0);
+			}
+		}
+
+		public static void Load(GameController GAMEPAD, StringBuilder stringBuilder) {
+			if (GAMEPAD.GetButton(5))
+			{
+				loader.Set(ControlMode.PercentOutput, 1);
+				stringBuilder.Append("\t");
+				stringBuilder.Append("Load Up");
+			}
+
+
+			if (GAMEPAD.GetButton(6))
+			{
+				loader.Set(ControlMode.PercentOutput, -1);
+				stringBuilder.Append("\t");
+				stringBuilder.Append("Load Down");
+			}
+
+			if (!GAMEPAD.GetButton(5) && !GAMEPAD.GetButton(6))
+			{
+				loader.Set(ControlMode.PercentOutput, 0);
 			}
 		}
     }
