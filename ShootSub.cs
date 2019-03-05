@@ -9,14 +9,14 @@ using CTRE.Phoenix.MotorControl;
 using CTRE.Phoenix.MotorControl.CAN;
 namespace BotShotCode {
     class ShootSub {
-        static TalonSRX shooterBM = new TalonSRX(3);
-        static TalonSRX shooterBS = new TalonSRX(4);
-        static VictorSPX shooterTM = new VictorSPX(7);
-        static VictorSPX shooterTS = new VictorSPX(8);
+        static TalonSRX shooterBM = new TalonSRX(2);
+        static TalonSRX shooterBS = new TalonSRX(1);
+        static VictorSPX shooterTM = new VictorSPX(6);
+        static VictorSPX shooterTS = new VictorSPX(5);
 
-		static VictorSPX tiltMoter = new VictorSPX(9);
-		static VictorSPX intake = new VictorSPX(10);
-		static VictorSPX loader = new VictorSPX(11);
+		static VictorSPX tiltMoter = new VictorSPX(4);
+		static VictorSPX intake = new VictorSPX(7);
+		static VictorSPX loader = new VictorSPX(8);
 
         public static void Shoot(GameController GAMEPAD, StringBuilder stringBuilder) {
 

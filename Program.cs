@@ -22,10 +22,11 @@ namespace BotShotCode {
 				/* drive robot using gamepad */
 				Operate();
                 /* print whatever is in our string builder */
-                Debug.Print(stringBuilder.ToString());
-                stringBuilder.Clear();
+                //Debug.Print(stringBuilder.ToString());
+                //stringBuilder.Clear();
                 /* feed watchdog to keep Talon's enabled */
                 CTRE.Phoenix.Watchdog.Feed();
+                Debug.Print("yoooo");
                 /* run this task every 20ms */
                 Thread.Sleep(20);
             }
@@ -35,7 +36,7 @@ namespace BotShotCode {
 
 		static void Operate() {
             if (_gamepad == null) {
-                _gamepad = new CTRE.Phoenix.Controller.GameController(UsbHostDevice.GetInstance());
+                _gamepad = new CTRE.Phoenix.Controller.GameController(UsbHostDevice.GetInstance(0));
             }
 			//Drive Function
 			stringBuilder.Append("--DRIVEBASE CONTROLS--");
